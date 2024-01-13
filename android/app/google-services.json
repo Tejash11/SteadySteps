@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "782189465310",
+    "project_id": "steadysteps-7c44f",
+    "storage_bucket": "steadysteps-7c44f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782189465310:android:436a36564faaf6137fbc4f",
+        "android_client_info": {
+          "package_name": "com.example.steadysteps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782189465310-99q80b01mtkb63taic7ruj2kk69nag3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.steadysteps",
+            "certificate_hash": "1f628966bd5192d2be12404f49f1cf5dac672348"
+          }
+        },
+        {
+          "client_id": "782189465310-q5vbj1q733aag8sbb7ou8f0dgcrachbo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0yYVqbZfgobUEkqOgBZ9IENRDNkgcguk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782189465310-q5vbj1q733aag8sbb7ou8f0dgcrachbo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
