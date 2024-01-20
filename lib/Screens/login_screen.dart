@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:steadysteps/Screens/home.dart';
 import 'package:steadysteps/Screens/main_screen.dart';
 
 class login_screen extends StatefulWidget {
@@ -17,21 +18,25 @@ class login_screen extends StatefulWidget {
 }
 
 class login_screen_state extends State<login_screen> {
+  ValueNotifier userCredential = ValueNotifier('');
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   User? _user;
 
-  void _onContainerTapped() async {
-    UserCredential? userCredential = await _handleSignIn();
-    if (userCredential != null) {
-      setState(() {
-        _user = userCredential.user;
-      });
-      print("User signed in: ${_user!.displayName}");
-    } else {
-      print("Error signing in with Google");
-    }
-  }
+  // Future<UserCredential?> _onContainerTapped() async {
+  //   UserCredential? userCredential = await _handleSignIn();
+  //   // UserCredential? userCredential = await signInWithGoogle();
+  //   if (userCredential != null) {
+  //     setState(() {
+  //       _user = userCredential.user;
+  //     });
+  //     print("User signed in: ${_user!.displayName}");
+  //   }
+  //   else {
+  //     print("Error signing in with Google");
+  //   }
+  //   return userCredential;
+  // }
 
   Future<UserCredential?> _handleSignIn() async {
     try {
@@ -51,6 +56,34 @@ class login_screen_state extends State<login_screen> {
       return null;
     }
   }
+
+  // Future<dynamic> signInWithGoogle() async {
+  //   try {
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //
+  //     final GoogleSignInAuthentication? googleAuth =
+  //     await googleUser?.authentication;
+  //
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth?.accessToken,
+  //       idToken: googleAuth?.idToken,
+  //     );
+  //
+  //     return await FirebaseAuth.instance.signInWithCredential(credential);
+  //   } on Exception catch (e) {
+  //     // TODO
+  //     print('exception->$e');
+  //   }
+  // }
+
+  // Future<bool> signOutFromGoogle() async {
+  //   try {
+  //     await FirebaseAuth.instance.signOut();
+  //     return true;
+  //   } on Exception catch (_) {
+  //     return false;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -425,6 +458,7 @@ class login_screen_state extends State<login_screen> {
                         border: Border.all(color: Color(0xff191919)),
                         borderRadius: BorderRadius.circular(13 * fem),
                       ),
+
                       // child: GestureDetector(
                       //   onTap: () {
                       //     _googleSignIn.signIn().then((value) {
@@ -466,11 +500,20 @@ class login_screen_state extends State<login_screen> {
                       // ),
 
                       child: GestureDetector(
-                        onTap: () {
-                          _googleSignIn.signIn().then((value) {
-                            String username = value!.displayName!;
-                            String profilepic = value!.photoUrl!;
-                          });
+                        onTap: () async {
+                          // await _googleSignIn.signIn().then((value) {
+                          //   String username = value!.displayName!;
+                          //   String profilepic = value!.photoUrl!;
+                          // });
+                          var userCredential = await _handleSignIn().then((value) =>
+                          {
+                          if(value != null)
+                          {
+                            Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => main_screen(0)),
+                          )
+                        }});
+
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -504,6 +547,98 @@ class login_screen_state extends State<login_screen> {
                           ],
                         ),
                       ),
+
+
+
+                      // child: GestureDetector(
+                      //   onTap: () async {
+                      //     userCredential.value = await signInWithGoogle();
+                      //     if (userCredential.value != null)
+                      //       print(userCredential.value.user!.email);
+                      //   },
+                      //   child: ValueListenableBuilder(
+                      //       valueListenable: userCredential,
+                      //       builder: (context, value, child){
+                      //         return (userCredential.value == '' ||
+                      //             userCredential.value == null)
+                      //             ? Center(
+                      //           child: Row(
+                      //             crossAxisAlignment: CrossAxisAlignment.center,
+                      //             children: [
+                      //               Container(
+                      //                 // flatcoloriconsgooglem3H (1:506)
+                      //                 margin: EdgeInsets.fromLTRB(
+                      //                     0 * fem, 0 * fem, 14 * fem, 0 * fem),
+                      //                 width: 20 * fem,
+                      //                 height: 20 * fem,
+                      //                 child: Image.network(
+                      //                   'https://cdn-icons-png.flaticon.com/128/300/300221.png',
+                      //                   width: 20 * fem,
+                      //                   height: 20 * fem,
+                      //                 ),
+                      //
+                      //               ),
+                      //               Container(
+                      //                 // continuewithgooglefPZ (1:511)
+                      //                 margin: EdgeInsets.fromLTRB(
+                      //                     0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                      //                 child: Text(
+                      //                   'Continue with Google',
+                      //                   style: GoogleFonts.poppins(
+                      //                     fontSize: 14 * ffem,
+                      //                     fontWeight: FontWeight.w400,
+                      //                     height: 1 * ffem / fem,
+                      //                     color: Color(0xff191919),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ],
+                      //           ),
+                      //         )
+                      //             :Center(
+                      //           child: Column(
+                      //             crossAxisAlignment: CrossAxisAlignment.center,
+                      //             mainAxisAlignment: MainAxisAlignment.center,
+                      //             children: [
+                      //               Container(
+                      //                 clipBehavior: Clip.antiAlias,
+                      //                 decoration: BoxDecoration(
+                      //                     shape: BoxShape.circle,
+                      //                     border: Border.all(
+                      //                         width: 1.5, color: Colors.black54)),
+                      //                 child: Image.network(
+                      //                     userCredential.value.user!.photoURL.toString()),
+                      //               ),
+                      //               const SizedBox(
+                      //                 height: 20,
+                      //               ),
+                      //               Text(userCredential.value.user!.displayName
+                      //                   .toString()),
+                      //               const SizedBox(
+                      //                 height: 20,
+                      //               ),
+                      //               Text(userCredential.value.user!.email.toString()),
+                      //               const SizedBox(
+                      //                 height: 30,
+                      //               ),
+                      //               ElevatedButton(
+                      //                   onPressed: () async {
+                      //                     bool result = await signOutFromGoogle();
+                      //                     if (result) userCredential.value = '';
+                      //                   },
+                      //                   child: const Text('Logout'))
+                      //             ],
+                      //           ),
+                      //         );
+                      //
+                      //       }
+                      //   ),
+                      // )
+
+
+
+
+
                     ),
                   ],
                 ),

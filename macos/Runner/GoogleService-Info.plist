@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>782189465310-u8q1odgblj7laro84via4q38o6btp9m5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.782189465310-u8q1odgblj7laro84via4q38o6btp9m5</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>782189465310-0m9et84ctom5g8agqm4q8tijsi92asfm.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCPrJDfdSD3WwY2eGNTJ3aav-mcPv3qdvM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>782189465310</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.steadysteps</string>
+	<key>PROJECT_ID</key>
+	<string>steadysteps-7c44f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>steadysteps-7c44f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:782189465310:ios:6b82eb8e876663457fbc4f</string>
+</dict>
+</plist>
